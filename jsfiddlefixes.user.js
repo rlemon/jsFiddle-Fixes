@@ -21,9 +21,23 @@ function EmbedFunctionOnPageAndExecute(fn) {
 
 /* Main */
 EmbedFunctionOnPageAndExecute(function() {
+	
+	/******************
+	 * DEFAULT VALUES
+	 * ***************/
+	/* check to see if the fiddle is new or not. We don't want to change the values for existing fiddles. */
 	if( !mooshell.options.example_id) {
-		var js_lib = document.getElementById('js_lib'); js_lib.selectedIndex = js_lib.querySelectorAll('option[value="11"]')[0].index;
-		var js_wrap = document.getElementById('js_wrap'); js_wrap.selectedIndex = js_wrap.querySelectorAll('option[value="b"]')[0].index;
+		
+		/* get the select menus */
+		var js_lib = document.getElementById('js_lib'),
+		js_wrap = document.getElementById('js_wrap');
+		
+		/* change the select menus */
+		js_lib.selectedIndex = js_lib.querySelectorAll('option[value="11"]')[0].index;
+		js_wrap.selectedIndex = js_wrap.querySelectorAll('option[value="b"]')[0].index;
+		
+		/* trigger the dependency load */
 		mooshell.loadDependencies(js_lib.value);
 	}
+	
 });
